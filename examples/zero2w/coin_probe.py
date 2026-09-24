@@ -1,4 +1,7 @@
-"""Observe both PCB-export and original-test coin routes. Do not sum them."""
+"""Watch COIN (BCM26) and COUNTER (BCM24) and print each pulse group.
+
+See which line your acceptor pulses. Never add the two counts together.
+"""
 from collections import deque
 from threading import Lock
 from time import monotonic, sleep
@@ -50,7 +53,7 @@ def main():
             for probe in probes:
                 count = probe.poll()
                 if count:
-                    print("BCM%d: %d pulse(s)" % (probe.bcm, count))
+                    print("%s BCM%d: %d pulse(s)" % ("COIN" if probe.bcm == 26 else "COUNTER", probe.bcm, count))
             sleep(0.005)
     except KeyboardInterrupt:
         pass
