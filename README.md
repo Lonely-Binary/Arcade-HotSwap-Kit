@@ -1,42 +1,63 @@
 # HotSwap Arcade Kit
 
-**One control panel. Four ways to build.**
+Ten buttons, a joystick and a coin acceptor on one mainboard, and four adapters
+that plug it into an ESP32-S3, a classic Arduino Nano, a Raspberry Pi Pico or
+Pico 2, or a Raspberry Pi Zero 2 W. This repository holds the example code.
 
-Connect buttons, a joystick and a coin acceptor to one mainboard. Choose an MCU adapter, upload an example and build your first arcade project.
+**The handbook is at [learn.lonelybinary.com/p/arcade](https://learn.lonelybinary.com/p/arcade)**: pin
+tables for every adapter, power, coins, the screen, a coin-operated game, and
+the mainboard in 3D.
 
 ![HotSwap Arcade Kit](docs/assets/arcade_photo-4.jpg)
 
-[Start here](docs/en/01-start.md) · [Choose your board](docs/en/02-boards.md) · [Pin reference](docs/en/pin-reference.md) · [Troubleshooting](docs/en/troubleshooting.md)
+## Quick start
 
-## Build it one step at a time
+1. Seat your development board on its adapter, and the adapter on the
+   mainboard's 26-pin socket, with every cable unplugged.
+2. Plug one button into **KEY1** and your board's own USB into your computer.
+   The mainboard's USB-C is power only; it has no data lines.
+3. Run the input monitor for your board and press KEY1:
 
-| Step | Make something work | What you need |
-| --- | --- | --- |
-| [1. Meet the kit](docs/en/01-start.md) | Identify connectors and assemble the mainboard | Kit + matching development board |
-| [2. Set up your board](docs/en/02-boards.md) | Upload your first program | Computer + USB data cable |
-| [3. Buttons and joystick](docs/en/03-inputs.md) | See every press and direction | No display or coin setup needed |
-| [4. Your first coin](docs/en/04-coins.md) | Read a pulse group | Coin acceptor + sample coins |
-| [5. A coin-operated game](docs/en/05-game.md) | Insert a coin, press Start, beat your score | Pico / Pico 2 + two buttons |
-| [6. Add a display](docs/en/06-display.md) | Show text and color on an SPI screen | Compatible display, sold separately |
-| [7. Build an enclosure](docs/en/07-build.md) | Turn the bench setup into your own machine | CAD files + your enclosure design |
-
-## Choose your platform
-
-| Platform | Language | Buttons + coin | Display route |
+| Board | Adapter | Run | Language |
 | --- | --- | --- | --- |
-| Classic Arduino Nano / ATmega328P | Arduino C++ | Yes | Not routed on this adapter |
-| ESP32-S3 | Arduino C++ | Yes | SPI |
-| Raspberry Pi Pico / Pico 2 | MicroPython | Yes | Software SPI with this pin layout |
-| Raspberry Pi Zero 2 W | Python on Raspberry Pi OS | Yes | Hardware SPI0 |
+| ESP32-S3 (DevKitC-1 layout) | ESP32-S3 | [`arduino/InputMonitor`](examples/arduino/InputMonitor/InputMonitor.ino) | Arduino C++ |
+| Classic Arduino Nano | NANO | [`arduino/InputMonitor`](examples/arduino/InputMonitor/InputMonitor.ino) | Arduino C++ |
+| Raspberry Pi Pico or Pico 2 | PICO 1/2 | [`pico/arcade.py`](examples/pico/arcade.py) + [`pico/input_monitor.py`](examples/pico/input_monitor.py) | MicroPython |
+| Raspberry Pi Zero 2 W | ZERO | [`zero2w/input_monitor.py`](examples/zero2w/input_monitor.py) | Python |
 
-The adapter is the carrier board; the development board runs your program. Check your purchased bundle for included parts. Disconnect power before changing adapters or cables.
+```text
+KEY1 pressed
+KEY1 released
+```
 
-## In this repository
+Each Arduino sketch names its board settings in its first lines. For coins,
+also plug the mainboard's USB-C into a 5 V, 2 A supply: the acceptor runs on
+12 V made on the mainboard, and nothing else powers it.
 
-- [Examples](examples/README.md): small input tests, coin diagnostics, a complete game and display tests.
-- [Hardware](hardware/README.md): schematics, connector maps and STEP/GLB models.
-- [Compatibility notes](docs/en/compatibility.md): board revisions, coin-pin differences and display controllers.
+## Examples
 
-**Start with the input test.** Use the coin probe to verify the ESP32-S3 or Zero 2 W coin input. Display examples target **ILI9488**; check your screen's controller before using them.
+| Example | What it does | Handbook |
+| --- | --- | --- |
+| [Input monitor](examples/README.md) | Prints every button and joystick direction | [Press a button](https://learn.lonelybinary.com/manuals/arcade/press-a-button) |
+| [Coin probe](examples/README.md) | Counts the pulses one coin sends | [Count the pulses](https://learn.lonelybinary.com/manuals/arcade/count-the-pulses) |
+| [Credit game](examples/pico/credit_game.py) | A coin buys a ten-second round (Pico) | [A coin-operated game](https://learn.lonelybinary.com/manuals/arcade/a-coin-operated-game) |
+| [Display test](examples/README.md) | Colour bars on an ILI9488 screen | [Add a screen](https://learn.lonelybinary.com/manuals/arcade/add-a-screen) |
 
-[Arcade kit](https://www.amazon.com/dp/B0HFM5Z5ZZ) · [Optional display kit](https://www.amazon.com/dp/B0GR4HRVV2) · [Lonely Binary](https://lonelybinary.com)
+The handbook quotes these files at a release tag, so what it explains is
+exactly what is here. See [examples/README.md](examples/README.md) for which
+files to copy to each board.
+
+## Hardware
+
+Pin tables for all four adapters are in the
+[quick reference PDF](https://learn.lonelybinary.com/downloads/arcade-quick-reference.pdf) and on
+[the handbook's reference page](https://learn.lonelybinary.com/manuals/arcade). Schematics and net lists
+are in [hardware/](hardware/README.md). STEP, GLB and mechanical drawings are
+published in [Lonely-Binary/cad](https://github.com/Lonely-Binary/cad/releases?q=arcade).
+
+## Questions and bugs
+
+- **A bug in the code:** open an issue here with the adapter, the development
+  board, the example and its exact output.
+- **A question about using the kit:** ask in the discussion at the foot of
+  any page of [the handbook](https://learn.lonelybinary.com/p/arcade).

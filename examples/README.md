@@ -1,6 +1,6 @@
 # Examples
 
-[Tutorial](../README.md) · [Board setup](../docs/en/02-boards.md) · [Pins](../docs/en/pin-reference.md)
+[Home](../README.md) · [Handbook](https://learn.lonelybinary.com/p/arcade)
 
 Run one example at a time. Disconnect power before changing hardware.
 
@@ -21,4 +21,4 @@ The ILI9488 drivers and ESP32 display initialization are adapted from the kit's 
 
 ## Validation
 
-The repository checker verifies local documentation links, Python syntax and example input arrays against the adapter netlists. Host-side tests exercise debounce, pulse grouping and game credit rules. Arduino sketches are compiled for the supported target boards; see [validation notes](../docs/en/validation.md). Hardware acceptance steps are listed at the end of each lesson.
+The repository checker verifies local documentation links, Python syntax and example input arrays against the adapter netlists. Host-side tests exercise debounce, pulse grouping and game credit rules. Arduino sketches are compiled for the supported target boards; see [tools/](../tools/check_repository.py). Hardware acceptance steps are listed at the end of each lesson.
