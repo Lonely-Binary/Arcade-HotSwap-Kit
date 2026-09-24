@@ -11,7 +11,7 @@
 
 #if defined(ARDUINO_AVR_NANO)
 const uint8_t INPUT_PINS[] = {2,3,4,5,6,7,8,9,10,11,12,A4,A3,A2};
-const uint8_t INPUT_MODE = INPUT; // Mainboard provides 10k pull-downs.
+const uint8_t INPUT_MODE = INPUT; // 10k pull-downs on the mainboard
 #elif defined(CONFIG_IDF_TARGET_ESP32S3)
 const uint8_t INPUT_PINS[] = {4,5,6,7,15,16,17,18,8,40,39,38,9,47};
 const uint8_t INPUT_MODE = INPUT_PULLDOWN;
