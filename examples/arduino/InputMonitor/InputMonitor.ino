@@ -36,12 +36,12 @@ void setup() {
 }
 
 void loop() {
-  unsigned long now = millis();
+  unsigned long ms = millis();
   // #region debounce
   for (uint8_t i=0; i<14; ++i) {
     bool value = digitalRead(INPUT_PINS[i]) == HIGH;
-    if (value != raw[i]) { raw[i] = value; changed[i] = now; }
-    if (value != stable[i] && now - changed[i] >= 30) {
+    if (value != raw[i]) { raw[i] = value; changed[i] = ms; }
+    if (value != stable[i] && ms - changed[i] >= 30) {
       stable[i] = value;
       Serial.print(NAMES[i]);
       Serial.println(value ? " pressed" : " released");

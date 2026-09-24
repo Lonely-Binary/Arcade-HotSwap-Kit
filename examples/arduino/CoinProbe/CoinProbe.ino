@@ -38,18 +38,18 @@ void setup() {
 }
 
 void loop() {
-  unsigned long now = millis();
+  unsigned long ms = millis();
   // #region group
   for (uint8_t i=0; i<CHANNELS; ++i) {
-    if (pulses[i] && now-lastEdge[i] >= GROUP_MS) {
+    if (pulses[i] && ms-lastEdge[i] >= GROUP_MS) {
       Serial.print(COIN_NAMES[i]); Serial.print(": ");
       Serial.print(pulses[i]); Serial.println(" pulse(s)");
       pulses[i] = 0;
     }
     bool low = digitalRead(COIN_PINS[i]) == LOW;
-    if (low && !lastLow[i] && (!seen[i] || now-lastEdge[i] >= LOCKOUT_MS)) {
+    if (low && !lastLow[i] && (!seen[i] || ms-lastEdge[i] >= LOCKOUT_MS)) {
       seen[i] = true;
-      lastEdge[i] = now;
+      lastEdge[i] = ms;
       if (pulses[i] < 65535) ++pulses[i];
     }
     lastLow[i] = low;
