@@ -2,9 +2,11 @@
 from time import ticks_ms, ticks_diff, sleep_ms
 from arcade import Button, CoinInput
 
-CREDITS_BY_PULSES = {1: 1}
+# #region config
+CREDITS_BY_PULSES = {1: 1}  # pulse group -> credits. {3: 1}: three pulses buy one credit.
 ROUND_MS = 10_000
 USE_DISPLAY = False
+# #endregion
 
 
 class Game:

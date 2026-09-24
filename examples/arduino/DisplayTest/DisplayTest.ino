@@ -1,4 +1,8 @@
-// ILI9488 only. ESP32-S3 adapter pinout; start with the color test.
+/*  HotSwap Arcade Kit - ILI9488 colour test, ESP32-S3 adapter only
+    Tools > Board ESP32S3 Dev Module · USB CDC On Boot Enabled
+    Library: Adafruit GFX Library (Library Manager, with its dependencies)
+    For an ILI9488 panel only. An ST7735, ST7789 or ST7796 panel needs
+    its own driver, and this sketch leaves it blank.                     */
 #include <Arduino.h>
 #include <Adafruit_GFX.h>
 #include <driver/spi_master.h>

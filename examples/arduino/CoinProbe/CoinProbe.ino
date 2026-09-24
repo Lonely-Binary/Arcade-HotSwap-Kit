@@ -1,16 +1,21 @@
+/*  HotSwap Arcade Kit - coin probe: count the pulses one coin sends
+    Nano:     Tools > Board Arduino Nano · Processor ATmega328P
+    ESP32-S3: Tools > Board ESP32S3 Dev Module · USB CDC On Boot Enabled
+              when the cable is in the board's native USB port
+    Power the mainboard from its USB-C: the acceptor's 12 V comes from there.
+    Serial Monitor at 115200. A pulse is the line pulled LOW.
+    Guide: https://learn.lonelybinary.com/manuals/arcade/count-the-pulses  */
+
 #include <Arduino.h>
 
 #if defined(ARDUINO_AVR_NANO)
-const uint8_t INPUT_PINS[] = {2,3,4,5,6,7,8,9,10,11,12,A4,A3,A2};
-const uint8_t INPUT_MODE = INPUT; // Mainboard provides 10k pull-downs.
 const uint8_t COIN_PINS[] = {A0};
-const char *COIN_NAMES[] = {"A0"};
+const char *COIN_NAMES[] = {"COIN A0"};
 #elif defined(CONFIG_IDF_TARGET_ESP32S3)
-const uint8_t INPUT_PINS[] = {4,5,6,7,15,16,17,18,8,40,39,38,9,47};
-const uint8_t INPUT_MODE = INPUT_PULLDOWN;
-// PCB export: COIN=14; original bench test: 21. Observe both.
+// COIN (header pin 19) lands on GPIO14, COUNTER (pin 18) on GPIO21.
+// Watch both, and see which one your acceptor pulses. Never add them up.
 const uint8_t COIN_PINS[] = {14,21};
-const char *COIN_NAMES[] = {"GPIO14", "GPIO21"};
+const char *COIN_NAMES[] = {"COIN GPIO14", "COUNTER GPIO21"};
 #else
 #error "Select classic Arduino Nano or ESP32S3 Dev Module."
 #endif
@@ -34,6 +39,7 @@ void setup() {
 
 void loop() {
   unsigned long now = millis();
+  // #region group
   for (uint8_t i=0; i<CHANNELS; ++i) {
     if (pulses[i] && now-lastEdge[i] >= GROUP_MS) {
       Serial.print(COIN_NAMES[i]); Serial.print(": ");
@@ -48,5 +54,6 @@ void loop() {
     }
     lastLow[i] = low;
   }
+  // #endregion
   delay(1);
 }
