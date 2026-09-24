@@ -8,7 +8,7 @@ Pico 2, or a Raspberry Pi Zero 2 W. This repository holds the example code.
 tables for every adapter, power, coins, the screen, a coin-operated game, and
 the mainboard in 3D.
 
-![HotSwap Arcade Kit](docs/assets/arcade_photo-4.jpg)
+![HotSwap Arcade Kit](https://learn.lonelybinary.com/modules/arcade/in-the-box.webp)
 
 ## Quick start
 
@@ -51,9 +51,10 @@ files to copy to each board.
 
 Pin tables for all four adapters are in the
 [quick reference PDF](https://learn.lonelybinary.com/downloads/arcade-quick-reference.pdf) and on
-[the handbook's reference page](https://learn.lonelybinary.com/manuals/arcade). Schematics and net lists
-are in [hardware/](hardware/README.md). STEP, GLB and mechanical drawings are
-published in [Lonely-Binary/cad](https://github.com/Lonely-Binary/cad/releases?q=arcade).
+[the handbook's reference page](https://learn.lonelybinary.com/manuals/arcade), and the mainboard
+is at [learn.lonelybinary.com/3d/arcade](https://learn.lonelybinary.com/3d/arcade) with every part
+explained. STEP, GLB and mechanical drawings are published in
+[Lonely-Binary/cad](https://github.com/Lonely-Binary/cad/releases?q=arcade).
 
 ## Questions and bugs
 

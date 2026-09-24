@@ -21,4 +21,4 @@ The ILI9488 drivers and ESP32 display initialization are adapted from the kit's 
 
 ## Validation
 
-The repository checker verifies local documentation links, Python syntax and example input arrays against the adapter netlists. Host-side tests exercise debounce, pulse grouping and game credit rules. Arduino sketches are compiled for the supported target boards; see [tools/](../tools/check_repository.py). Hardware acceptance steps are listed at the end of each lesson.
+The repository checker verifies local links and Python syntax; the handbook's tests check every pin list here against the adapters' net lists. Host-side tests exercise debounce, pulse grouping and game credit rules. Arduino sketches are compiled for the supported target boards; see [tools/](../tools/check_repository.py).
