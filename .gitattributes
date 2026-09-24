@@ -1,0 +1,6 @@
+*.pdf binary
+*.glb binary
+*.png binary
+*.jpg binary
+*.step -text -diff -merge
+hardware/netlists/*.tel -text -whitespace
