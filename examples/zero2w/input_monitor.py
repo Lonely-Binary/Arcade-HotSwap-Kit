@@ -14,7 +14,7 @@ def main():
         raw = [b.value for b in buttons]
         stable = raw.copy()
         changed = [monotonic()] * len(buttons)
-        print("Input monitor ready. Press a button or move the joystick.")
+        print("Ready. Press a button or push the stick.")
         while True:
             now = monotonic()
             for i, button in enumerate(buttons):

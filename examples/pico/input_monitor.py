@@ -3,7 +3,7 @@ from time import sleep_ms
 from arcade import Button, INPUT_PINS, INPUT_NAMES
 
 buttons = [Button(gpio) for gpio in INPUT_PINS]
-print("Input monitor ready. Press a button or move the joystick.")
+print("Ready. Press a button or push the stick.")
 while True:
     for name, button in zip(INPUT_NAMES, buttons):
         event = button.poll()

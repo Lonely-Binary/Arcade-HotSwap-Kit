@@ -19,8 +19,9 @@ const uint8_t INPUT_MODE = INPUT_PULLDOWN;
 #error "Select classic Arduino Nano or ESP32S3 Dev Module."
 #endif
 
-const char *NAMES[] = {"KEY1","KEY2","KEY3","KEY4","KEY5","KEY6","KEY7",
-                       "KEY8","KEY9","KEY10","UP","DOWN","LEFT","RIGHT"};
+const char *NAMES[] = {"KEY1", "KEY2", "KEY3", "KEY4", "KEY5",
+                       "KEY6", "KEY7", "KEY8", "KEY9", "KEY10",
+                       "UP", "DOWN", "LEFT", "RIGHT"};
 bool raw[14], stable[14];
 unsigned long changed[14];
 
@@ -32,7 +33,7 @@ void setup() {
     raw[i] = stable[i] = digitalRead(INPUT_PINS[i]) == HIGH;
     changed[i] = millis();
   }
-  Serial.println("Input monitor ready. Press a button or move the joystick.");
+  Serial.println("Ready. Press a button or push the stick.");
 }
 
 void loop() {
